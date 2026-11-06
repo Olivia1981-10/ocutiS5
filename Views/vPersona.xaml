@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ocutiS5.Views.vPersona"
+             Title="vPersona">
+    <VerticalStackLayout
+        Padding="15"
+        Spacing="15">
+        
+        <Label 
+            Text="Semana 5: BASES"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Grid Padding="15"
+          RowSpacing="15"
+          RowDefinitions="Auto,Auto,Auto,*">
+            <Label
+            Grid.Row="0"
+            Text="Semana 5: BASES DE DATOS LOCALES"
+            FontSize="20"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+            <Entry x:Name="txtName"
+               Grid.Row="1"
+               Placeholder="Ingresa el nombre"/>
+
+            <Grid Grid.Row="2"
+              Padding="5"
+              RowSpacing="5"
+              ColumnSpacing="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnAgregar"
+                    Text="Agregar Persona"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Clicked="btnAgregar_Clicked"/>
+                <Label x:Name="lblStatusMessage"
+                   TextColor="Red"
+                   Grid.Row="1"
+                   Grid.Column="0"/>
+                <Button x:Name="btnMostrar"
+                    Text="Mostrar Personas"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Clicked="btnMostrar_Clicked"/>
+            </Grid>
+
+            <CollectionView x:Name="cvPersonas"
+                        Grid.Row="3">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*,3*,Auto,Auto" Padding="5">
+                            <Label Grid.Column="0" Text="{Binding Id}" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Text="{Binding Name}" VerticalOptions="Center" />
+                            <Button Grid.Column="2"
+                                Text="&#x1F5D1;"
+                                FontSize="20"
+                                Padding="0"
+                                BackgroundColor="Transparent"
+                                Clicked="btnEliminar_Clicked"/>
+                            
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>
